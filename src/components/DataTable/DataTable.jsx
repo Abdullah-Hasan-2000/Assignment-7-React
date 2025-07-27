@@ -12,7 +12,6 @@ import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-
 export default function BasicTable() {
 
     const [data, setData] = React.useState([]);
@@ -54,11 +53,11 @@ export default function BasicTable() {
                             <TableCell>
 
                                 <Stack direction="row" justifyContent={'center'} spacing={2}>
-                                    <IconButton aria-label="delete">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                    <IconButton aria-label="edit">
+                                    <IconButton aria-label="edit" sx={{ color: 'rgb(215, 187, 48)' }}>
                                         <EditIcon />
+                                    </IconButton>
+                                    <IconButton aria-label="delete">
+                                        <DeleteIcon color='error' />
                                     </IconButton>
                                 </Stack>
                             </TableCell>
