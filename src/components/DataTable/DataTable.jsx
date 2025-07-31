@@ -11,27 +11,26 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import axios from 'axios';
 
 export default function BasicTable() {
 
     const [data, setData] = React.useState([]);
 
     useEffect(() => {
-        fetch('https://dummyjson.com/users')
-            .then((response) => response.json())
-            .then((data) => setData(data.users))
+        axios.get('http://localhost:3000/users')
+            .then((response) => setData(response.data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(data);
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
+                        <TableCell>ID</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Email</TableCell>
-                        <TableCell>Address</TableCell>
                         <TableCell>Phone</TableCell>
                         <TableCell>Birthdate</TableCell>
                         <TableCell align='center'>Actions</TableCell>
@@ -43,11 +42,11 @@ export default function BasicTable() {
                             key={e.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
+                            <TableCell >{i + 1}</TableCell>
                             <TableCell component="th" scope="row">
                                 {e.firstName}{' '}{e.maidenName}{' '}{e.lastName}
                             </TableCell>
                             <TableCell >{e.email}</TableCell>
-                            <TableCell >{e.address.address + ', ' + e.address.city}</TableCell>
                             <TableCell >{e.phone}</TableCell>
                             <TableCell >{e.birthDate}</TableCell>
                             <TableCell>

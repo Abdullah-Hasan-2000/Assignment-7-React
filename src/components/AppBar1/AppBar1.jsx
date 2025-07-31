@@ -7,8 +7,11 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { useNavigate } from 'react-router-dom';
 
 export default function ButtonAppBar() {
+    const navigate = useNavigate();
+
     return (
         <div style={{ margin: '0', padding: '0' }}>
             <Box sx={{ flexGrow: 1 }}>
@@ -18,10 +21,10 @@ export default function ButtonAppBar() {
                             Manage <b>Employees</b>
                         </Typography>
                         <Stack sx={{ marginRight: 4 }} direction="row" spacing={2}>
-                            <Button variant="contained" color="error" startIcon={<RemoveCircleIcon />}>
+                            <Button  variant="contained" color="error" startIcon={<RemoveCircleIcon />}>
                                 Delete
                             </Button>
-                            <Button variant="contained" color="success" startIcon={<AddCircleIcon />}>
+                            <Button onClick={() => {navigate('/adduser')}} variant="contained" color="success" startIcon={<AddCircleIcon />}>
                                 Add New Employee
                             </Button>
                         </Stack>
